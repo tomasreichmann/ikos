@@ -74,10 +74,10 @@ export default class App extends Component {
 	}
 	
 	loadContent(content) {
-		const thisLayout = this;
+		const thisApp = this;
 		if ( content.dataUrl ) {
-			thisLayout.setState({
-				...thisLayout.state,
+			thisApp.setState({
+				...thisApp.state,
 				content: {
 					...content,
 					componentName: 'Loading',
@@ -98,16 +98,16 @@ export default class App extends Component {
 						(Math.random() > 0.25) ? resolve( mockResponses.success ) : reject( mockResponses.fail )
 					}, 1000)
 				) ).then( (json)=>(
-					thisLayout.setState({
-						...thisLayout.state,
+					thisApp.setState({
+						...thisApp.state,
 						content: {
 							...content,
 							...json,
 						},
 					})
 				), (error)=>(
-					thisLayout.setState({
-						...thisLayout.state,
+					thisApp.setState({
+						...thisApp.state,
 						content: {
 							...content,
 							componentName: 'Alert',
@@ -123,8 +123,8 @@ export default class App extends Component {
 					.then(function(response) {
 						return response.json()
 					}, (error) => {
-						return thisLayout.setState({
-							...thisLayout.state,
+						return thisApp.setState({
+							...thisApp.state,
 							content: {
 								...content,
 								componentName: 'Alert',
@@ -135,16 +135,16 @@ export default class App extends Component {
 							},
 						})
 					} ).then(function(json) {
-						thisLayout.setState({
-							...thisLayout.state,
+						thisApp.setState({
+							...thisApp.state,
 							content: {
 								...content,
 								...json,
 							},
 						});
 					}).catch(function(ex) {
-						thisLayout.setState({
-							...thisLayout.state,
+						thisApp.setState({
+							...thisApp.state,
 							content: {
 								...content,
 								componentName: 'Alert',
@@ -158,8 +158,8 @@ export default class App extends Component {
 				;
 			}
 		} else {
-			thisLayout.setState({
-				...thisLayout.state,
+			thisApp.setState({
+				...thisApp.state,
 				content,
 			});
 		}

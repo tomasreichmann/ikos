@@ -1,36 +1,104 @@
-import {serverUrl} from './config.json';
-
+import {serverUrl, menu} from './config.json';
+console.log('menu', menu);
 export default {
-	['GET:' + serverUrl + '/general/info']: {
+	['GET:' + menu[0].children[0].dataUrl]: {
 		success: {
-			componentProps: {
-				groups: [
-					[
-						{ label: 'Sériové číslo', value: 123564 },
-						{ label: 'Licencováno pro', value: 'IKOS test' },
-					],
-					[
-						{ label: 'Sériové číslo', value: 123564 },
-						{ label: 'Licencováno pro', value: 'IKOS test' },
-					]
-				]
-			}
-		},
+            "componentProps": {
+                "groups": [
+                    [
+                        {
+                            "label": "Sériové číslo",
+                            "value": "123456SAD"
+                        },
+                        {
+                            "label": "Licencováno pro",
+                            "value": "IKOS CZ s.r.o."
+                        }
+                    ],
+                    [
+                        {
+                            "label": "Hardware ver.",
+                            "value": "1.0"
+                        },
+                        {
+                            "label": "Firmware ver.",
+                            "value": "1.1"
+                        },
+                        {
+                            "label": "Web ver.",
+                            "value": "1.2"
+                        }
+                    ],
+                    [
+                        {
+                            "label": "Doba běhu terminálu",
+                            "value": "up 1 day, 55 minutes"
+                        },
+                        {
+                            "label": "Aktuální čas",
+                            "value": "09.09.2017 19:29:33"
+                        }
+                    ]
+                ]
+            }
+        },
 		fail: {
 			errorCode: 404,
 			errorMessage: 'Požadovaná data nejsou k dispozici.'
 		}
 	},
-	['GET:' + serverUrl + '/system/network-connections']: {
+	['GET:' + menu[0].children[1].dataUrl]: {
 		success: {
 			componentProps: {
-				updateUrl: serverUrl + '/system/network-connections',
-				formElements: [
-					{ label: 'DHCP', name: 'dhcp', componentName: 'Checkbox', value: true },
-					{ label: 'IP adresa', name: 'i_p_address', componentName: 'Input', pattern: '((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$', value: '192.168.0.100' },
-					{ label: 'Maska podsítě', name: 'subnet_mask', componentName: 'Input', pattern: '((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$', value: '255.255.255.0' },
-					{ label: 'Výchozí brána', name: 'default_gate', componentName: 'Input', pattern: '((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$', value: '192.168.0.1' },
-					{ label: 'DNS server', name: 'dns_server', componentName: 'Input', pattern: '((^|\\.)((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]?\\d))){4}$', value: '192.168.0.2' },
+                headings: [
+                    'typ',
+                    'datum',
+                    'čas',
+                    'událost'
+                ],
+				groups: [
+                   [
+                       {
+                           "value": [
+                               'info',
+                               '01.09.2017',
+                               '07:57:27',
+                               'Spuštění terminálu IT-WATT'
+                           ]
+                       },
+                       {
+                            "value": [
+                                'info',
+                                '01.09.2017',
+                                '07:57:27',
+                                'Spuštění terminálu IT-WATT'
+                            ]
+                        },
+                       {
+                            "value": [
+                                'info',
+                                '01.09.2017',
+                                '07:57:27',
+                                'Spuštění terminálu IT-WATT'
+                            ]
+                        },
+                       {
+                            "value": [
+                                'info',
+                                '01.09.2017',
+                                '07:57:27',
+                                'Spuštění terminálu IT-WATT sa dsad asd asd '
+                            ]
+                        },
+                       {
+                            "value": [
+                                'info',
+                                '01.09.2017',
+                                '07:57:27',
+                                'Spuštění'
+                            ]
+                        },
+                   ] 
 				]
 			}
 		},

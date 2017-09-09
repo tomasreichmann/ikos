@@ -1,40 +1,117 @@
 {
-    "serverUrl": "http://192.168.0.1",
+    "serverUrl": "http://localhost:3000",
 	"mockServer": true,
 	"menu": [
-		{
-			"label": "Obecné",
-			"children": [
-				{
-					"label": "Informace",
-					"heading": "OBECNÉ - Informace",
-					"componentName": "Table",
-					"dataUrl": "http://192.168.0.1/general/info"
-				}
-			]
-		},
-		{
-			"label": "Systém",
-			"children": [
-				{
-					"label": "Síťová připojení",
-					"heading": "SYSTÉM - Síťová připojení",
-					"componentName": "Form",
-					"dataUrl": "http://192.168.0.1/system/network-connections"
-				},
-				{
-					"label": "Změna hesla",
-					"componentName": "Form",
-					"componentProps": {
-						"updateUrl": "http://192.168.0.1/system/password-update",
-						"formElements": [
-							{ "label": "Původní heslo", "name": "original_password", "componentName": "Input", "type": "password", "value": "" },
-							{ "label": "Nové heslo", "name": "new_password", "componentName": "Input", "type": "password", "value": "" },
-							{ "label": "Opakovat nové heslo", "name": "new_password_repeat", "componentName": "Input", "type": "password", "value": "" }
-						]
-					}
-				}
-			]
-		}
-	]
-}
+        {
+            "label": "OBECNÉ",
+            "children": [
+
+                {
+                    "label": "Informace",
+                    "heading": "OBECNÉ - Informace",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/cgi-bin/config.cgi"
+                },
+                {
+                    "label": "Prohlížeč událostí",
+                    "heading": "OBECNÉ - Prohlížeč událostí",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                },
+                {
+                    "label": "Historie přihlašování",
+                    "heading": "OBECNÉ - Historie přihlašování",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                },
+                {
+                    "label": "Nastavení času",
+                    "heading": "OBECNÉ - Historie přihlašování",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                }
+
+                ]
+            },
+            {
+                "label": "KLÁVESY",
+
+                "children": [
+                    {
+                        "label": "Klávesy",
+                        "heading": "KLÁVESY - Klávesy",
+                        "componentName": "Table",
+                        "dataUrl": "http://localhost:3000/system/sys_info.json"
+                    },
+                    {
+                        "label": "Oblíbené",
+                        "heading": "KLÁVESY - Oblíbené",
+                        "componentName": "Table",
+                        "dataUrl": "http://localhost:3000/system/sys_info.json"
+                    },
+                    {
+                        "label": "Přepínání Kláves",
+                        "heading": "KLÁVESY - Přepínání Kláves",
+                        "componentName": "Table",
+                        "dataUrl": "http://localhost:3000/system/sys_info.json"
+                    }
+                ]
+            },
+            {
+                "label": "SYSTÉM",
+
+                "children": [
+
+                {
+                    "label": "Uživatelský motiv",
+                    "heading": "SYSTÉM - Síťová připojení",
+                    "componentName": "Form",
+                    "dataUrl": "http://localhost:3000/system/network-connections"
+                },
+                {
+                    "label": "Změna hesla",
+                    "componentName": "Form",
+                    "componentProps": {
+                        "updateUrl": "http://localhost:3000/system/password-update",
+                        "formElements": [{
+                            "label": "Původní heslo",
+                            "name": "original_password",
+                            "componentName": "Input",
+                            "type": "password",
+                            "value": ""
+                        }, {
+                            "label": "Nové heslo",
+                            "name": "new_password",
+                            "componentName": "Input",
+                            "type": "password",
+                            "value": ""
+                        }, {
+                            "label": "Opakovat nové heslo",
+                            "name": "new_password_repeat",
+                            "componentName": "Input",
+                            "type": "password",
+                            "value": ""
+                        }]
+                    }
+                },
+                {
+                    "label": "Síťová připojení",
+                    "heading": "SYSTÉM - Síťová připojení",
+                    "componentName": "Form",
+                    "dataUrl": "http://localhost:3000/system/network-connections"
+                },		
+                {
+                    "label": "Firmware",
+                    "heading": "SYSTÉM - Firmware",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                },		
+                {
+                    "label": "Restart/Vypnutí",
+                    "heading": "SYSTÉM - Restart/Vypnutí",
+                    "componentName": "Table",
+                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                }
+            ]
+        }
+]}
