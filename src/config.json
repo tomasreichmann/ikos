@@ -1,0 +1,40 @@
+{
+    "serverUrl": "http://192.168.0.1",
+	"mockServer": true,
+	"menu": [
+		{
+			"label": "Obecné",
+			"children": [
+				{
+					"label": "Informace",
+					"heading": "OBECNÉ - Informace",
+					"componentName": "Table",
+					"dataUrl": "http://192.168.0.1/general/info"
+				}
+			]
+		},
+		{
+			"label": "Systém",
+			"children": [
+				{
+					"label": "Síťová připojení",
+					"heading": "SYSTÉM - Síťová připojení",
+					"componentName": "Form",
+					"dataUrl": "http://192.168.0.1/system/network-connections"
+				},
+				{
+					"label": "Změna hesla",
+					"componentName": "Form",
+					"componentProps": {
+						"updateUrl": "http://192.168.0.1/system/password-update",
+						"formElements": [
+							{ "label": "Původní heslo", "name": "original_password", "componentName": "Input", "type": "password", "value": "" },
+							{ "label": "Nové heslo", "name": "new_password", "componentName": "Input", "type": "password", "value": "" },
+							{ "label": "Opakovat nové heslo", "name": "new_password_repeat", "componentName": "Input", "type": "password", "value": "" }
+						]
+					}
+				}
+			]
+		}
+	]
+}
