@@ -1,33 +1,4 @@
-$brand-primary: #e50071;
-$brand-secondary: #b4c800;
-$brand-success: #5cb85c;
-$brand-warning: #f0ad4e;
-$brand-danger: #d9534f;
-$brand-info: #5096a0;
-
-$inverse-bg: #111;
-
-$padding-base-vertical: 5px;
-$padding-small-vertical: 1px;
-$padding-large-vertical: 10px;
-$padding-base-horizontal: 10px;
-$padding-large-horizontal: 20px;
-
-$btn-default-bg: $inverse-bg;
-$btn-border-radius-base: 0;
-
-$inputBorder: 2px solid $inverse-bg;
-$text-color: #333;
-
-$font-size-base: 14px;
-$font-family-sans-serif: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-
-$mobileLandscape: 320px;
-$tabletPortrait: 768px;
-$tabletLandscape: 1024px;
-$desktop: 1200px;
-
-// ---
+@import '_variables.scss';
 
 *, *:before, *:after {
 	box-sizing: border-box;
@@ -245,74 +216,6 @@ main {
   &_info {
     background: lighten($brand-info, 20%);
   }
-}
-
-.Table {
-	
-	table {
-		border-spacing: 0;
-    border-collapse: collapse;
-		width: 100%;
-		margin-bottom: 2rem;
-	}
-	
-	th {
-		text-align: left;
-    padding: 0.5rem 1rem 0.5rem 0;
-    width: 200px;
-	}
-	
-	td {
-		padding: 0.5rem 0 0.5rem 1rem;
-	}
-	
-	td, th {
-		border-bottom: 1px solid #eee;
-	}
-}
-
-.Form {
-	&_formElement {
-		display: flex;
-		margin-bottom: 0.5rem;
-	}
-	
-	&_label {
-		flex: 0 0 150px;
-	}
-	&_control {
-		flex: 1 1 auto;
-		position: relative;
-		
-		input[type="text"], input[type="password"] {
-			width: 100%;
-		}
-	}
-	&_submit {
-		width: 100%;
-		margin-top: 2rem;
-	}
-	
-	input[type="text"], input[type="password"] {
-		border: 0;
-		border-bottom: 2px solid #ccc;
-		border-radius: 0;
-		padding: 0 0 0.5rem 0;
-		
-		&:focus {
-			border-bottom-color: $brand-secondary;
-			outline: none;
-		}
-	}
-	
-	&_formElement_invalid {
-			input[type="text"], input[type="password"] {
-				border-bottom-color: $brand-danger;
-			}
-			.Form_label {
-				color: $brand-danger;
-			}
-		}
 }
 
 .btn {

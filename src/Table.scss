@@ -1,0 +1,30 @@
+.Table {
+	
+	table {
+		border-spacing: 0;
+        border-collapse: collapse;
+		width: 100%;
+		margin-bottom: 2rem;
+	}
+	
+	th {
+        text-align: left;
+	}
+	
+	td, th {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #eee;
+        
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+    
+    &_groupDivider td {
+        border-bottom: 0;
+        height: 2rem;
+    }
+}

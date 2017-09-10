@@ -5,7 +5,7 @@
         {
             "label": "OBECNÉ",
             "children": [
-
+                
                 {
                     "label": "Informace",
                     "heading": "OBECNÉ - Informace",
@@ -15,65 +15,105 @@
                 {
                     "label": "Prohlížeč událostí",
                     "heading": "OBECNÉ - Prohlížeč událostí",
-                    "componentName": "Table",
+                    "componentName": ["Markdown", "Table"],
                     "dataUrl": "http://localhost:3000/system/sys_info.json"
                 },
                 {
                     "label": "Historie přihlašování",
                     "heading": "OBECNÉ - Historie přihlašování",
                     "componentName": "Table",
-                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                    "dataUrl": "http://localhost:3000/system/login_history.json"
                 },
                 {
                     "label": "Nastavení času",
-                    "heading": "OBECNÉ - Historie přihlašování",
-                    "componentName": "Table",
-                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                    "heading": "OBECNÉ - Nastavení času",
+                    "componentName": ["Form","Form","Form"],
+                    "componentProps": [{
+                        "text": "Aktuální datum a čas v terminálu 10.09.2017 10:16:51\n",
+                        "updateUrl": "http://localhost:3000/system/time-update",
+                        "formElements": [
+                            {
+                                "label": "Formát času",
+                                "name": "time_format",
+                                "componentName": "Select",
+                                "options": [
+                                    {
+                                        "label": "DD.MM. YYYY hh:mm:ss",
+                                        "value": "DD.MM. YYYY hh:mm:ss"
+                                    }, {
+                                        "label": "MM.DD. YYYY hh:mm:ss",
+                                        "value": "MM.DD. YYYY hh:mm:ss"
+                                    }
+                                ],
+                                "value": "DD.MM. YYYY hh:mm:ss"
+                            }
+                        ]
+                    }, {
+                        "updateUrl": "http://localhost:3000/system/time-update",
+                        "formElements": [
+                            {
+                                "label": "Datum",
+                                "name": "date",
+                                "componentName": "Input",
+                                "type": "text",
+                                "value": "10.09.2017"
+                            }
+                        ]
+                    }, {
+                        "updateUrl": "http://localhost:3000/system/time-update",
+                        "formElements": [
+                            {
+                                "label": "Čas",
+                                "name": "time",
+                                "componentName": "Input",
+                                "type": "text",
+                                "value": "10:16:51"
+                            }
+                        ]
+                    }]
                 }
-
-                ]
+            ]
+        },
+    {
+        "label": "KLÁVESY",
+        "children": [
+            {
+                "label": "Klávesy",
+                "heading": "KLÁVESY - Klávesy",
+                "componentName": "KeysTable",
+                "dataUrl": "http://localhost:3000/system/keys.json"
             },
             {
-                "label": "KLÁVESY",
-
-                "children": [
-                    {
-                        "label": "Klávesy",
-                        "heading": "KLÁVESY - Klávesy",
-                        "componentName": "Table",
-                        "dataUrl": "http://localhost:3000/system/sys_info.json"
-                    },
-                    {
-                        "label": "Oblíbené",
-                        "heading": "KLÁVESY - Oblíbené",
-                        "componentName": "Table",
-                        "dataUrl": "http://localhost:3000/system/sys_info.json"
-                    },
-                    {
-                        "label": "Přepínání Kláves",
-                        "heading": "KLÁVESY - Přepínání Kláves",
-                        "componentName": "Table",
-                        "dataUrl": "http://localhost:3000/system/sys_info.json"
-                    }
-                ]
+                "label": "Oblíbené",
+                "heading": "KLÁVESY - Oblíbené",
+                "componentName": "Table",
+                "dataUrl": "http://localhost:3000/system/sys_info.json"
             },
             {
-                "label": "SYSTÉM",
-
-                "children": [
-
-                {
-                    "label": "Uživatelský motiv",
-                    "heading": "SYSTÉM - Síťová připojení",
-                    "componentName": "Form",
-                    "dataUrl": "http://localhost:3000/system/network-connections"
-                },
-                {
-                    "label": "Změna hesla",
-                    "componentName": "Form",
-                    "componentProps": {
-                        "updateUrl": "http://localhost:3000/system/password-update",
-                        "formElements": [{
+                "label": "Přepínání Kláves",
+                "heading": "KLÁVESY - Přepínání Kláves",
+                "componentName": "Table",
+                "dataUrl": "http://localhost:3000/system/sys_info.json"
+            }
+        ]
+    },
+    {
+        "label": "SYSTÉM",
+        "children": [
+            
+            {
+                "label": "Uživatelský motiv",
+                "heading": "SYSTÉM - Síťová připojení",
+                "componentName": "Form",
+                "dataUrl": "http://localhost:3000/system/network-connections"
+            },
+            {
+                "label": "Změna hesla",
+                "componentName": "Form",
+                "componentProps": {
+                    "updateUrl": "http://localhost:3000/system/password-update",
+                    "formElements": [
+                        {
                             "label": "Původní heslo",
                             "name": "original_password",
                             "componentName": "Input",
@@ -91,27 +131,28 @@
                             "componentName": "Input",
                             "type": "password",
                             "value": ""
-                        }]
-                    }
-                },
-                {
-                    "label": "Síťová připojení",
-                    "heading": "SYSTÉM - Síťová připojení",
-                    "componentName": "Form",
-                    "dataUrl": "http://localhost:3000/system/network-connections"
-                },		
-                {
-                    "label": "Firmware",
-                    "heading": "SYSTÉM - Firmware",
-                    "componentName": "Table",
-                    "dataUrl": "http://localhost:3000/system/sys_info.json"
-                },		
-                {
-                    "label": "Restart/Vypnutí",
-                    "heading": "SYSTÉM - Restart/Vypnutí",
-                    "componentName": "Table",
-                    "dataUrl": "http://localhost:3000/system/sys_info.json"
+                        }
+                    ]
                 }
-            ]
-        }
+            },
+            {
+                "label": "Síťová připojení",
+                "heading": "SYSTÉM - Síťová připojení",
+                "componentName": "Form",
+                "dataUrl": "http://localhost:3000/system/network-connections"
+            },		
+            {
+                "label": "Firmware",
+                "heading": "SYSTÉM - Firmware",
+                "componentName": "Table",
+                "dataUrl": "http://localhost:3000/system/sys_info.json"
+            },		
+            {
+                "label": "Restart/Vypnutí",
+                "heading": "SYSTÉM - Restart/Vypnutí",
+                "componentName": "Table",
+                "dataUrl": "http://localhost:3000/system/sys_info.json"
+            }
+        ]
+    }
 ]}

@@ -1,3 +1,4 @@
+import './Form.scss';
 import React, {Component} from 'react';
 import Alert from './Alert';
 
@@ -7,11 +8,19 @@ export default class Form extends Component {
 		this.componentMap = {
 			Checkbox: (element, handleChange) => {
 				const { value, ...elementProps } = element;
-				return <input type="checkbox" defaultChecked={value || false} onChange={handleChange} {...elementProps} />
+				return <input className="Input" type="checkbox" defaultChecked={value || false} onChange={handleChange} {...elementProps} />
 			},
 			Input: (element, handleChange) => {
 				const { value, ...elementProps } = element;
-				return <input type="text" defaultValue={element.value} {...elementProps} onChange={handleChange} />
+				return <input className="Input" type="text" defaultValue={element.value} {...elementProps} onChange={handleChange} />
+			},
+			Select: (element, handleChange) => {
+                const { value, options, ...elementProps } = element;
+				return <select className="Input" type="text" defaultValue={element.value} {...elementProps} onChange={handleChange} >
+                    {options.map( ({label, value}) => (
+                        <option value={value}>{label}</option>
+                    ) )}
+                </select>
 			},
 		};
 		this.state = {
@@ -92,8 +101,9 @@ export default class Form extends Component {
 	}
 	
 	render() {
-		const { formElements = [] } = this.props;
+		const { formElements = [], text = null } = this.props;
 		return <div className="Form" >
+            {text ? <p>{text}</p> : null}
 			<form name="form" ref={ (formElement) => (this.formElement = formElement ) } onSubmit={this.handleSubmit} >
 				{ formElements.map( this.renderFormElement ) }
 				{ this.state.alertProps ? <Alert {...this.state.alertProps} /> : null }

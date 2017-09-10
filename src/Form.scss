@@ -1,0 +1,35 @@
+@import '_variables.scss';
+
+.Form {
+    margin: 1rem 0;
+
+	&_formElement {
+		display: flex;
+		margin-bottom: 0.5rem;
+	}
+	
+	&_label {
+		flex: 0 0 150px;
+	}
+	&_control {
+		flex: 1 1 auto;
+		position: relative;
+		
+		input[type="text"], input[type="password"] {
+			width: 100%;
+		}
+	}
+	&_submit {
+		width: 100%;
+		margin-top: 2rem;
+	}
+	
+	&_formElement_invalid {
+			input[type="text"], input[type="password"] {
+				border-bottom-color: $brand-danger;
+			}
+			.Form_label {
+				color: $brand-danger;
+			}
+		}
+}

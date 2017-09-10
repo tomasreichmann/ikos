@@ -10,6 +10,8 @@ import Form from './Form';
 import Menu from './Menu';
 import Table from './Table';
 import Header from './Header';
+import Markdown from './Markdown';
+import KeysTable from './KeysTable';
 import ChangePasswordForm from './ChangePasswordForm';
 
 import classNameMapper from './classNameMapper';
@@ -29,6 +31,8 @@ export default class App extends Component {
 			Loading,
 			Table,
 			Form,
+			Markdown,
+			KeysTable,
 			ChangePasswordForm,
 		};
     const initialContent = config.menu[0].children[0];
@@ -167,17 +171,30 @@ export default class App extends Component {
 	
 	renderContent(){
 		let { componentName, componentProps = {}, heading } = this.state.content;
-		
-		if (!this.componentMap[componentName]) {
-			componentProps = { warning: true, children: 'Component ' + componentName + ' not found! Available components: ' + Object.keys(this.componentMap).join(', ') };
-			componentName = 'Alert';
-		}
-		const ContentComponent = this.componentMap[componentName];
-			
-		return <div className="Layout_content" >
-			{ heading ? <h2>{heading}</h2> : null }
-			<ContentComponent {...componentProps} sendData={this.sendData} />
-		</div>;
+
+    const components = Array.isArray(componentName) ? componentName.map( (componentName, componentIndex) => {
+      return {
+        componentName,
+        componentProps: componentProps[componentIndex]
+      };
+    } ) : [{
+      componentName,
+      componentProps
+    }];
+
+    return (<div className="Layout_content" >
+      { heading ? <h2>{heading}</h2> : null }
+      { components.map( ({componentName, componentProps}) => {
+        console.log('componentName', componentName);
+        if (!this.componentMap[componentName]) {
+          componentProps = { warning: true, children: 'Component ' + componentName + ' not found! Available components: ' + Object.keys(this.componentMap).join(', ') };
+          componentName = 'Alert';
+        }
+        const ContentComponent = this.componentMap[componentName];
+          
+        return <ContentComponent {...componentProps} sendData={this.sendData} />;
+      } ) }
+    </div>);
 	}
 	
 	render() {
