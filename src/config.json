@@ -84,16 +84,10 @@
                 "dataUrl": "http://localhost:3000/system/keys.json"
             },
             {
-                "label": "Oblíbené",
-                "heading": "KLÁVESY - Oblíbené",
-                "componentName": "Table",
-                "dataUrl": "http://localhost:3000/system/sys_info.json"
-            },
-            {
                 "label": "Přepínání Kláves",
                 "heading": "KLÁVESY - Přepínání Kláves",
-                "componentName": "Table",
-                "dataUrl": "http://localhost:3000/system/sys_info.json"
+                "componentName": ["Form", "KeysTable"],
+                "dataUrl": "http://localhost:3000/system/key_switch.json"
             }
         ]
     },
@@ -109,17 +103,12 @@
             },
             {
                 "label": "Změna hesla",
+                "heading": "SYSTÉM - Změna hesla",
                 "componentName": "Form",
                 "componentProps": {
                     "updateUrl": "http://localhost:3000/system/password-update",
                     "formElements": [
                         {
-                            "label": "Původní heslo",
-                            "name": "original_password",
-                            "componentName": "Input",
-                            "type": "password",
-                            "value": ""
-                        }, {
                             "label": "Nové heslo",
                             "name": "new_password",
                             "componentName": "Input",
@@ -140,18 +129,15 @@
                 "heading": "SYSTÉM - Síťová připojení",
                 "componentName": "Form",
                 "dataUrl": "http://localhost:3000/system/network-connections"
-            },		
-            {
-                "label": "Firmware",
-                "heading": "SYSTÉM - Firmware",
-                "componentName": "Table",
-                "dataUrl": "http://localhost:3000/system/sys_info.json"
-            },		
+            },			
             {
                 "label": "Restart/Vypnutí",
                 "heading": "SYSTÉM - Restart/Vypnutí",
-                "componentName": "Table",
-                "dataUrl": "http://localhost:3000/system/sys_info.json"
+                "componentName": "Markdown",
+                "componentProps": {
+                    "children": "[Restartovat](/cgi-bin/restart.cgi) [Vypnout](/cgi-bin/shutdown.cgi)",
+                    "makeLinksIntoButtons": true
+                }
             }
         ]
     }

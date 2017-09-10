@@ -267,6 +267,69 @@ export default {
 			errorMessage: 'Požadovaná data nejsou k dispozici.'
 		}
     },
+    ['GET:' + menu[1].children[1].dataUrl]: {
+		success: {
+			componentProps: [
+                {
+                    updateUrl: "http://localhost:3000/system/key-switch-auto-return",
+                    formElements: [
+                        {
+                            label: "Automatický návrat k výchozí klávese za [sek.]",
+                            name: "auto_return",
+                            componentName: "Input",
+                            type: "number",
+                            value: 5
+                        }
+                    ]
+                }, {
+                    updateUrl: "http://localhost:3000/system/key-switch-key-update",
+                    formProps: {
+                        formElements: [
+                            {
+                                label: "",
+                                name: "code",
+                                componentName: "Input",
+                                disabled: true,
+                                type: "text",
+                                value: "0"
+                            }, {
+                                label: "Čas",
+                                name: "time",
+                                componentName: "Input",
+                                type: "text",
+                                value: "00:00"
+                            }, {
+                                label: "Klávesa",
+                                name: "key",
+                                componentName: "Input",
+                                type: "select",
+                                options: [
+                                    { label: 'Příchod', value: 0},
+                                    { label: 'Odchod', value: 1}
+                                ],
+                                value: 1
+                            }
+                        ]
+                    },
+                    keys: [
+                        {
+                            code: 0,
+                            time: '12:00',
+                            key: 1
+                        }, {
+                            code: 1,
+                            time: '16:00',
+                            key: 0
+                        }
+                    ]
+                }
+            ]
+		},
+		fail: {
+			errorCode: 404,
+			errorMessage: 'Požadovaná data nejsou k dispozici.'
+		}
+    },
     ['POST:' + 'http://localhost:3000/system/keys-update']: {
         success: {
 		},
@@ -276,8 +339,39 @@ export default {
 			errorMessage: 'Formulář se nepodařilo odeslat.'
 		}
     },
-	['POST:' + serverUrl + '/system/network-connections']: {
+	['GET:' + 'http://localhost:3000/system/network-connections']: {
 		success: {
+            componentName: "Form",
+            componentProps: {
+                updateUrl: "http://localhost:3000/system/network-connections",
+                formElements: [
+                    {
+                        label: "IP adresa",
+                        name: "ip",
+                        componentName: "Input",
+                        type: "text",
+                        value: "192.168.1.100"
+                    }, {
+                        label: "Maska",
+                        name: "subnet_mask",
+                        componentName: "Input",
+                        type: "text",
+                        value: "255.255.0.0"
+                    }, {
+                        label: "Výchozí brána",
+                        name: "default_gateway",
+                        componentName: "Input",
+                        type: "text",
+                        value: "192.168.1.1"
+                    }, {
+                        label: "IP adresa serveru",
+                        name: "server_ip",
+                        componentName: "Input",
+                        type: "text",
+                        value: "192.168.1.200"
+                    },
+                ]
+            }
 		},
 		fail: {
 			errorCode: 401,

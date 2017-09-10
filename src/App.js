@@ -59,7 +59,7 @@ export default class App extends Component {
 			const mockResponses = mockInterface[method + ':' + updateUrl];
 			if ( !mockResponses ) {
 				alert('Mock responses for ' + method + ':' + updateUrl + ' missing!');
-				return;
+				return Promise.reject('Mock responses for ' + method + ':' + updateUrl + ' missing!');
 			}
 			return new Promise( (resolve, reject) => (
 				setTimeout( function(){

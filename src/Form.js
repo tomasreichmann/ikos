@@ -53,7 +53,7 @@ export default class Form extends Component {
 		event.preventDefault();
 		if ( !this.props.updateUrl ) {
 			alert('Missing "updateUrl" in componentProps!');
-			return;
+			return Promise.reject('Missing "updateUrl" in componentProps!');
 		}
 		console.dir(this.formElement);
 		const formData = Array.from(this.formElement).reduce( (formData, element)=>(
